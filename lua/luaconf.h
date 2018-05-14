@@ -862,6 +862,12 @@ static inline int time(void *p)
 
 /* stdlib.h */
 #include <linux/slab.h>
+
+#if defined(llex_c) || defined(lstate_c) || defined(lcode_c) || \
+        defined(ldebug_c) || defined(lparser_c)
+#undef current
+#endif
+
 #define free 			kfree
 #define realloc(a, b) 		krealloc(a, b, GFP_ATOMIC)
 
